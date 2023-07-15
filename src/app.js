@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import sessionRouter from './routes/sessions.route.js'
 import { faker } from '@faker-js/faker'
+import logger from './logger.js'
 
 const app = express()
 const PORT = 8080
@@ -19,4 +20,14 @@ app.use('/api/test/user', (req, res) => {
     res.send(user)
 })
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
+app.listen(PORT, () => {
+    // logger.error(`Listening on port ${PORT}`)
+    // logger.warn(`Listening on port ${PORT}`)
+    // logger.http(`Listening on port ${PORT}`)
+    // logger.verbose(`Listening on port ${PORT}`)
+    // logger.debug(`Listening on port ${PORT}`)
+    // logger.silly(`Listening on port ${PORT}`)
+
+    logger.info(`Listening on port ${PORT}`)
+    logger.log('info', `Listening on port ${PORT}`)
+})
